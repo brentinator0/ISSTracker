@@ -1,0 +1,2 @@
+github "apollostack/apollo-ios"
+github "mapbox/mapbox-navigation-ios" ~> 0.27.0

@@ -14,6 +14,10 @@
 		92B7019A21D0924400E5D270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B7019821D0924400E5D270 /* LaunchScreen.storyboard */; };
 		92B701A521D0924400E5D270 /* ISSTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B701A421D0924400E5D270 /* ISSTrackerTests.swift */; };
 		92B701B021D0924400E5D270 /* ISSTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B701AF21D0924400E5D270 /* ISSTrackerUITests.swift */; };
+		92E46AFB21D0D11A0034B511 /* MapboxCoreNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46AF721D0D11A0034B511 /* MapboxCoreNavigation.framework */; };
+		92E46AFC21D0D11B0034B511 /* MapboxNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46AF821D0D11A0034B511 /* MapboxNavigation.framework */; };
+		92E46AFD21D0D11B0034B511 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46AF921D0D11A0034B511 /* Apollo.framework */; };
+		92E46AFE21D0D11B0034B511 /* MapboxNavigationNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46AFA21D0D11A0034B511 /* MapboxNavigationNative.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		92B701AB21D0924400E5D270 /* ISSTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISSTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B701AF21D0924400E5D270 /* ISSTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISSTrackerUITests.swift; sourceTree = "<group>"; };
 		92B701B121D0924400E5D270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92E46AF721D0D11A0034B511 /* MapboxCoreNavigation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxCoreNavigation.framework; path = Carthage/Build/iOS/MapboxCoreNavigation.framework; sourceTree = "<group>"; };
+		92E46AF821D0D11A0034B511 /* MapboxNavigation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxNavigation.framework; path = Carthage/Build/iOS/MapboxNavigation.framework; sourceTree = "<group>"; };
+		92E46AF921D0D11A0034B511 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
+		92E46AFA21D0D11A0034B511 /* MapboxNavigationNative.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxNavigationNative.framework; path = Carthage/Build/iOS/MapboxNavigationNative.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E46AFB21D0D11A0034B511 /* MapboxCoreNavigation.framework in Frameworks */,
+				92E46AFC21D0D11B0034B511 /* MapboxNavigation.framework in Frameworks */,
+				92E46AFD21D0D11B0034B511 /* Apollo.framework in Frameworks */,
+				92E46AFE21D0D11B0034B511 /* MapboxNavigationNative.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,7 @@
 				92B701A321D0924400E5D270 /* ISSTrackerTests */,
 				92B701AE21D0924400E5D270 /* ISSTrackerUITests */,
 				92B7018D21D0924300E5D270 /* Products */,
+				92E46AF621D0D11A0034B511 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +138,17 @@
 			path = ISSTrackerUITests;
 			sourceTree = "<group>";
 		};
+		92E46AF621D0D11A0034B511 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92E46AF921D0D11A0034B511 /* Apollo.framework */,
+				92E46AF721D0D11A0034B511 /* MapboxCoreNavigation.framework */,
+				92E46AF821D0D11A0034B511 /* MapboxNavigation.framework */,
+				92E46AFA21D0D11A0034B511 /* MapboxNavigationNative.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +159,7 @@
 				92B7018821D0924300E5D270 /* Sources */,
 				92B7018921D0924300E5D270 /* Frameworks */,
 				92B7018A21D0924300E5D270 /* Resources */,
+				92E46AFF21D0D1260034B511 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -250,6 +275,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		92E46AFF21D0D1260034B511 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MapboxNavigation.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MapboxCoreNavigation.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MapboxNavigationNative.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		92B7018821D0924300E5D270 /* Sources */ = {
@@ -434,6 +483,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BDPWURKBA5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ISSTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,6 +505,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BDPWURKBA5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ISSTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
