@@ -1,9 +1,9 @@
-type GetISSLocationPayload {
+type ISSLocationPayload {
 	longitude: String
 	latitude: String
 	timestamp: Int
 }
 
 extend type Query {
-	getISSLocation: GetISSLocationPayload
+	ISSLocation: ISSLocationPayload
 }

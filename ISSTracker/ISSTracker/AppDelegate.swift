@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Apollo
+
+let apollo = ApolloClient(url: URL(string: "https://api.graph.cool/simple/v1/cjq22o07gah3e0134jeaf6cu5")!)
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

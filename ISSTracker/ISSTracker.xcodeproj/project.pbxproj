@@ -8,16 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		92B7019021D0924300E5D270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B7018F21D0924300E5D270 /* AppDelegate.swift */; };
-		92B7019221D0924300E5D270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B7019121D0924300E5D270 /* ViewController.swift */; };
 		92B7019521D0924300E5D270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B7019321D0924300E5D270 /* Main.storyboard */; };
 		92B7019721D0924400E5D270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92B7019621D0924400E5D270 /* Assets.xcassets */; };
 		92B7019A21D0924400E5D270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B7019821D0924400E5D270 /* LaunchScreen.storyboard */; };
 		92B701A521D0924400E5D270 /* ISSTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B701A421D0924400E5D270 /* ISSTrackerTests.swift */; };
 		92B701B021D0924400E5D270 /* ISSTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B701AF21D0924400E5D270 /* ISSTrackerUITests.swift */; };
-		92E46AFB21D0D11A0034B511 /* MapboxCoreNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46AF721D0D11A0034B511 /* MapboxCoreNavigation.framework */; };
-		92E46AFC21D0D11B0034B511 /* MapboxNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46AF821D0D11A0034B511 /* MapboxNavigation.framework */; };
 		92E46AFD21D0D11B0034B511 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46AF921D0D11A0034B511 /* Apollo.framework */; };
-		92E46AFE21D0D11B0034B511 /* MapboxNavigationNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46AFA21D0D11A0034B511 /* MapboxNavigationNative.framework */; };
+		92E46B0521D0E1060034B511 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B0421D0E1060034B511 /* API.swift */; };
+		92E46B0821D0E1360034B511 /* ISSLocationViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 92E46B0721D0E1360034B511 /* ISSLocationViewController.graphql */; };
+		92E46B0A21D0E5780034B511 /* ISSLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B0921D0E5780034B511 /* ISSLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +39,6 @@
 /* Begin PBXFileReference section */
 		92B7018C21D0924300E5D270 /* ISSTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISSTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B7018F21D0924300E5D270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		92B7019121D0924300E5D270 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		92B7019421D0924300E5D270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92B7019621D0924400E5D270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92B7019921D0924400E5D270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,10 +49,10 @@
 		92B701AB21D0924400E5D270 /* ISSTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISSTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B701AF21D0924400E5D270 /* ISSTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISSTrackerUITests.swift; sourceTree = "<group>"; };
 		92B701B121D0924400E5D270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92E46AF721D0D11A0034B511 /* MapboxCoreNavigation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxCoreNavigation.framework; path = Carthage/Build/iOS/MapboxCoreNavigation.framework; sourceTree = "<group>"; };
-		92E46AF821D0D11A0034B511 /* MapboxNavigation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxNavigation.framework; path = Carthage/Build/iOS/MapboxNavigation.framework; sourceTree = "<group>"; };
 		92E46AF921D0D11A0034B511 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
-		92E46AFA21D0D11A0034B511 /* MapboxNavigationNative.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxNavigationNative.framework; path = Carthage/Build/iOS/MapboxNavigationNative.framework; sourceTree = "<group>"; };
+		92E46B0421D0E1060034B511 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		92E46B0721D0E1360034B511 /* ISSLocationViewController.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ISSLocationViewController.graphql; sourceTree = "<group>"; };
+		92E46B0921D0E5780034B511 /* ISSLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISSLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92E46AFB21D0D11A0034B511 /* MapboxCoreNavigation.framework in Frameworks */,
-				92E46AFC21D0D11B0034B511 /* MapboxNavigation.framework in Frameworks */,
 				92E46AFD21D0D11B0034B511 /* Apollo.framework in Frameworks */,
-				92E46AFE21D0D11B0034B511 /* MapboxNavigationNative.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,12 +105,13 @@
 		92B7018E21D0924300E5D270 /* ISSTracker */ = {
 			isa = PBXGroup;
 			children = (
+				92E46B0621D0E1150034B511 /* GraphQL */,
 				92B7018F21D0924300E5D270 /* AppDelegate.swift */,
-				92B7019121D0924300E5D270 /* ViewController.swift */,
 				92B7019321D0924300E5D270 /* Main.storyboard */,
 				92B7019621D0924400E5D270 /* Assets.xcassets */,
 				92B7019821D0924400E5D270 /* LaunchScreen.storyboard */,
 				92B7019B21D0924400E5D270 /* Info.plist */,
+				92E46B0921D0E5780034B511 /* ISSLocationViewController.swift */,
 			);
 			path = ISSTracker;
 			sourceTree = "<group>";
@@ -142,11 +138,17 @@
 			isa = PBXGroup;
 			children = (
 				92E46AF921D0D11A0034B511 /* Apollo.framework */,
-				92E46AF721D0D11A0034B511 /* MapboxCoreNavigation.framework */,
-				92E46AF821D0D11A0034B511 /* MapboxNavigation.framework */,
-				92E46AFA21D0D11A0034B511 /* MapboxNavigationNative.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		92E46B0621D0E1150034B511 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				92E46B0721D0E1360034B511 /* ISSLocationViewController.graphql */,
+				92E46B0421D0E1060034B511 /* API.swift */,
+			);
+			name = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,10 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92B701B421D0924400E5D270 /* Build configuration list for PBXNativeTarget "ISSTracker" */;
 			buildPhases = (
+				92E46B0021D0D6EB0034B511 /* Generate Apollo GraphQL API */,
 				92B7018821D0924300E5D270 /* Sources */,
 				92B7018921D0924300E5D270 /* Frameworks */,
 				92B7018A21D0924300E5D270 /* Resources */,
-				92E46AFF21D0D1260034B511 /* ShellScript */,
+				92E46AFF21D0D1260034B511 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -257,6 +260,7 @@
 				92B7019A21D0924400E5D270 /* LaunchScreen.storyboard in Resources */,
 				92B7019721D0924400E5D270 /* Assets.xcassets in Resources */,
 				92B7019521D0924300E5D270 /* Main.storyboard in Resources */,
+				92E46B0821D0E1360034B511 /* ISSLocationViewController.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +281,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		92E46AFF21D0D1260034B511 /* ShellScript */ = {
+		92E46AFF21D0D1260034B511 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -286,10 +290,8 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MapboxNavigation.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MapboxCoreNavigation.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MapboxNavigationNative.framework",
 			);
+			name = Carthage;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -298,6 +300,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};
+		92E46B0021D0D6EB0034B511 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -305,7 +325,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92B7019221D0924300E5D270 /* ViewController.swift in Sources */,
+				92E46B0A21D0E5780034B511 /* ISSLocationViewController.swift in Sources */,
+				92E46B0521D0E1060034B511 /* API.swift in Sources */,
 				92B7019021D0924300E5D270 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
