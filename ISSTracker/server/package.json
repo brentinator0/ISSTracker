@@ -1,0 +1,9 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "My Graphcool Service",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "url-encode": "^1.0.5"
+  }
+}
