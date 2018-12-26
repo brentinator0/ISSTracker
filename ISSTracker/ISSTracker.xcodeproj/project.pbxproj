@@ -17,6 +17,8 @@
 		92E46B0521D0E1060034B511 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B0421D0E1060034B511 /* API.swift */; };
 		92E46B0821D0E1360034B511 /* ISSLocationViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 92E46B0721D0E1360034B511 /* ISSLocationViewController.graphql */; };
 		92E46B0A21D0E5780034B511 /* ISSLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B0921D0E5780034B511 /* ISSLocationViewController.swift */; };
+		92E46B0D21D184360034B511 /* MapboxGeocoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46B0B21D184360034B511 /* MapboxGeocoder.framework */; };
+		92E46B0E21D184360034B511 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E46B0C21D184360034B511 /* Mapbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		92E46B0421D0E1060034B511 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		92E46B0721D0E1360034B511 /* ISSLocationViewController.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ISSLocationViewController.graphql; sourceTree = "<group>"; };
 		92E46B0921D0E5780034B511 /* ISSLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISSLocationViewController.swift; sourceTree = "<group>"; };
+		92E46B0B21D184360034B511 /* MapboxGeocoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxGeocoder.framework; path = Carthage/Build/iOS/MapboxGeocoder.framework; sourceTree = "<group>"; };
+		92E46B0C21D184360034B511 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Carthage/Build/iOS/Mapbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E46AFD21D0D11B0034B511 /* Apollo.framework in Frameworks */,
+				92E46B0D21D184360034B511 /* MapboxGeocoder.framework in Frameworks */,
+				92E46B0E21D184360034B511 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +143,8 @@
 		92E46AF621D0D11A0034B511 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92E46B0C21D184360034B511 /* Mapbox.framework */,
+				92E46B0B21D184360034B511 /* MapboxGeocoder.framework */,
 				92E46AF921D0D11A0034B511 /* Apollo.framework */,
 			);
 			name = Frameworks;
@@ -290,6 +298,8 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Mapbox.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MapboxGeocoder.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
