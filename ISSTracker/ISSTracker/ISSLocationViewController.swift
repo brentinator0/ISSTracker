@@ -23,7 +23,16 @@ class ISSLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMapView()
-        scheduledTimerWithTimeInterval()
+        //scheduledTimerWithTimeInterval()
+        //apollo.subscribe(subscription: CreateMessageSubscription(), resultHandler: <#T##(GraphQLResult<GraphQLSelectionSet>?, Error?) -> Void#>)
+        
+        apollo.subscribe(subscription: CreateMessageSubscription()) { result, error in
+            if let result = result {
+                // Callback completed - this isn't getting triggered
+                var x = 1
+            }
+        }
+        let x = 1
     }
     
     private static func generateMapView() -> MGLMapView {

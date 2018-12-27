@@ -11,6 +11,21 @@ type User @model {
   # posts: [Post!]! @relation(name: "UserPosts")
 }
 
+type Location @model {
+    id: ID! @isUnique
+    latitude: Float!
+    longitude: Float!
+    country: String!
+
+    message: Message! @relation(name: "LocationOnMessage")
+}
+
+type Message @model {
+    id: ID! @isUnique
+    text: String!
+
+    location: Location! @relation(name: "LocationOnMessage")
+}
 
 # Uncomment the model below as well
 

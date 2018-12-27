@@ -1,0 +1,16 @@
+subscription createMessage {
+  Message(filter: {
+    mutation_in: [CREATED]
+  }) {
+  	mutation
+    node {
+      id
+      text
+      location {
+        latitude
+        longitude
+        country
+      }
+    }
+  }
+}

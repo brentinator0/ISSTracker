@@ -8,9 +8,39 @@
 
 import UIKit
 import Apollo
+import ApolloWebSocket
 
-let apollo = ApolloClient(url: URL(string: "https://api.graph.cool/simple/v1/cjq22o07gah3e0134jeaf6cu5")!)
+//let apollo = ApolloClient(url: URL(string: "https://api.graph.cool/simple/v1/cjq22o07gah3e0134jeaf6cu5")!)
 
+var apollo: ApolloClient = {
+    // Leave auth stuff here for later
+    let authPayloads = [
+        "Authorization": "Bearer "
+    ]
+    let configuration = URLSessionConfiguration.default
+    configuration.httpAdditionalHeaders = authPayloads
+
+    let map: GraphQLMap = authPayloads
+    let wsEndpointURL = URL(string: "wss://subscriptions.us-west-2.graph.cool/v1/cjq22o07gah3e0134jeaf6cu5")!
+    let endpointURL = URL(string: "https://api.graph.cool/simple/v1/cjq22o07gah3e0134jeaf6cu5")!
+    
+    var request = URLRequest(url: wsEndpointURL)
+    request.setValue("<my_key>", forHTTPHeaderField: "X-Hasura-Access-Key")
+    
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+
+    let websocket = WebSocketTransport(request: request, sendOperationIdentifiers: false)
+
+    let splitNetworkTransport = SplitNetworkTransport(
+        httpNetworkTransport: HTTPNetworkTransport(
+            url: endpointURL,
+            configuration: configuration
+        ),
+        webSocketNetworkTransport: websocket
+    )
+    return ApolloClient(networkTransport: splitNetworkTransport)
+}()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
         return true
     }
 
