@@ -49,7 +49,7 @@ class ISSLocationViewController: UIViewController {
     @objc private func updateISSLocation() {
         
         apollo.fetch(query: IssLocationQuery(), cachePolicy: .returnCacheDataAndFetch) { result, error in
-            guard let issLocation = result?.data?.issLocation else { return }
+        guard let issLocation = result?.data?.issLocation else { return }
             
             guard let long = issLocation.longitude, let lat = issLocation.latitude else { return }
             guard let doubleLong = Double(long), let doubleLat = Double(lat) else { return }

@@ -1,5 +1,2 @@
 binary "https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json" "4.7.1"
-github "apollostack/apollo-ios" "0.9.4"
-github "daltoniam/Starscream" "3.0.6"
 github "mapbox/MapboxGeocoder.swift" "v0.10.1"
-github "stephencelis/SQLite.swift" "0.11.5"
