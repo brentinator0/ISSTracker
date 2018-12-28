@@ -1,0 +1,6 @@
+framework module Pods_ISSTrackerUITests {
+  umbrella header "Pods-ISSTrackerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

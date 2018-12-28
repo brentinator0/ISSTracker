@@ -18,12 +18,22 @@ class ISSLocationViewController: UIViewController {
     var lat = 0.0
     var long = 0.0
     
+    var chatViewModel: ChatViewModel?
+    
     let centerAnnotation = MGLPointAnnotation()
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 40
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
+        
         configureMapView()
         scheduledTimerWithTimeInterval()
+        configureViewModels()
     }
     
     private static func generateMapView() -> MGLMapView {
@@ -37,7 +47,7 @@ class ISSLocationViewController: UIViewController {
         mapView.frame = self.view.bounds
         mapView.delegate = self
 
-        self.view.addSubview(mapView)
+        self.view.insertSubview(mapView, belowSubview: tableView)
         self.mapView.addAnnotation(self.centerAnnotation)
     }
     
@@ -47,7 +57,6 @@ class ISSLocationViewController: UIViewController {
     }
     
     @objc private func updateISSLocation() {
-        
         apollo.fetch(query: IssLocationQuery(), cachePolicy: .returnCacheDataAndFetch) { result, error in
             guard let issLocation = result?.data?.issLocation else { return }
             
@@ -60,12 +69,42 @@ class ISSLocationViewController: UIViewController {
             print("New Coordinates: lat:\(doubleLat) long:\(doubleLong)")
             self.mapView.setCenter(CLLocationCoordinate2D(latitude: doubleLat, longitude: doubleLong), zoomLevel: 3.0, animated: true)
             self.centerAnnotation.coordinate = self.mapView.centerCoordinate
-            
-            // Add marker `hello` to the map.
+        }
+    }
+    
+    private func configureViewModels() {
+        chatViewModel = ChatViewModel()
+        chatViewModel?.initFetch()
+        
+        chatViewModel?.reloadTableViewClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
+}
+
+extension ISSLocationViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let vm = chatViewModel else { return 0 }
+        return vm.numberOfCells
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatMessageCellID", for: indexPath) as? ChatMessageTableViewCell else {
+            fatalError("Cell not exists in storyboard")
         }
         
+        let cellData = self.chatViewModel?.getCellData(at: indexPath)
+        cell.messageLabel.text = cellData?.messageText
+        
+        return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40.0
+    }
 }
 
 extension ISSLocationViewController: MGLMapViewDelegate {
@@ -92,4 +131,8 @@ extension ISSLocationViewController: MGLMapViewDelegate {
 //            }
 //        }
     }
+}
+
+class ChatMessageTableViewCell: UITableViewCell {
+    @IBOutlet weak var messageLabel: UILabel!
 }
