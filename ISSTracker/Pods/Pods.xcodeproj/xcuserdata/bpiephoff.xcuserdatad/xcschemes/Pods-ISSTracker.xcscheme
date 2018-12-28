@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1065D61F6994277497FDF0D1C68FDA66"
+               BlueprintIdentifier = "C5A2AB054A8CB9592CEE61E8B8061565"
                BuildableName = "Pods_ISSTracker.framework"
                BlueprintName = "Pods-ISSTracker"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1065D61F6994277497FDF0D1C68FDA66"
+            BlueprintIdentifier = "C5A2AB054A8CB9592CEE61E8B8061565"
             BuildableName = "Pods_ISSTracker.framework"
             BlueprintName = "Pods-ISSTracker"
             ReferencedContainer = "container:Pods.xcodeproj">

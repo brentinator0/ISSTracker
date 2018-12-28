@@ -1,0 +1,11 @@
+query RetreiveLastMessages($numOfMessages: Int) {
+  allMessages(last: $numOfMessages) {
+    id
+    text
+    location {
+      latitude
+      longitude
+      country
+    }
+  }
+}

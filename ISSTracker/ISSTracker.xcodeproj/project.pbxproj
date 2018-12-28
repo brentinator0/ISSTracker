@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06F3454AC593F6567851A768 /* Pods_ISSTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A9516CC17005871CF07B28 /* Pods_ISSTrackerUITests.framework */; };
 		646E46FE5B65656B2FEB5BE0 /* Pods_ISSTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFBF5D9308BB293B2D5BEB7 /* Pods_ISSTracker.framework */; };
+		9289760C21D56E620093C0DA /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9289760B21D56E620093C0DA /* ChatViewModel.swift */; };
 		92B7019021D0924300E5D270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B7018F21D0924300E5D270 /* AppDelegate.swift */; };
 		92B7019521D0924300E5D270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B7019321D0924300E5D270 /* Main.storyboard */; };
 		92B7019721D0924400E5D270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92B7019621D0924400E5D270 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		80E1F4916F59396D31265640 /* Pods-ISSTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISSTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISSTrackerTests/Pods-ISSTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		884E3BD71FAA6AF6FA99A92F /* Pods-ISSTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISSTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISSTracker/Pods-ISSTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		8CFBF5D9308BB293B2D5BEB7 /* Pods_ISSTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISSTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9289760B21D56E620093C0DA /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		92B7018C21D0924300E5D270 /* ISSTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISSTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B7018F21D0924300E5D270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92B7019421D0924300E5D270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				92B7019821D0924400E5D270 /* LaunchScreen.storyboard */,
 				92B7019B21D0924400E5D270 /* Info.plist */,
 				92E46B0921D0E5780034B511 /* ISSLocationViewController.swift */,
+				9289760B21D56E620093C0DA /* ChatViewModel.swift */,
 			);
 			path = ISSTracker;
 			sourceTree = "<group>";
@@ -197,11 +200,12 @@
 			buildConfigurationList = 92B701B421D0924400E5D270 /* Build configuration list for PBXNativeTarget "ISSTracker" */;
 			buildPhases = (
 				403BFC3715E50C6639F3FA41 /* [CP] Check Pods Manifest.lock */,
-				92B7018821D0924300E5D270 /* Sources */,
 				92B7018921D0924300E5D270 /* Frameworks */,
 				92B7018A21D0924300E5D270 /* Resources */,
 				92E46AFF21D0D1260034B511 /* Carthage */,
-				130F98876E00541290467140 /* [CP] Embed Pods Frameworks */,
+				92B7018821D0924300E5D270 /* Sources */,
+				92A426E621D4C57000A5A018 /* Generate GraphQL API (Apollo) */,
+				86FA410A52137DD782792D14 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,28 +326,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		130F98876E00541290467140 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ISSTracker/Pods-ISSTracker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISSTracker/Pods-ISSTracker-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		403BFC3715E50C6639F3FA41 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,6 +370,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		86FA410A52137DD782792D14 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ISSTracker/Pods-ISSTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISSTracker/Pods-ISSTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		87DE161C99EBB19AEEA8499B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,6 +415,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		92A426E621D4C57000A5A018 /* Generate GraphQL API (Apollo) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate GraphQL API (Apollo)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1 -print -quit)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
 		};
 		92E46AFF21D0D1260034B511 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -438,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E46B0A21D0E5780034B511 /* ISSLocationViewController.swift in Sources */,
+				9289760C21D56E620093C0DA /* ChatViewModel.swift in Sources */,
 				92E46B0521D0E1060034B511 /* API.swift in Sources */,
 				92B7019021D0924300E5D270 /* AppDelegate.swift in Sources */,
 			);
@@ -622,6 +647,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ISSTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -645,6 +671,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ISSTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
