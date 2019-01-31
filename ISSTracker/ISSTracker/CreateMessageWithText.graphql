@@ -1,0 +1,15 @@
+mutation CreateMessageWithText($text: String!, $lat: String!, $long: String!, $country: String!) {
+  createMessage(text: $text, location: {
+      latitude: $lat
+      longitude: $long
+      country: $country
+    }) {
+      id
+      text
+      location {
+        latitude
+        longitude
+        country
+      }
+    }
+}

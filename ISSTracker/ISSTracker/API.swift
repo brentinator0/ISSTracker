@@ -132,6 +132,168 @@ public final class IssLocationQuery: GraphQLQuery {
   }
 }
 
+public final class CreateMessageWithTextMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation CreateMessageWithText($text: String!, $lat: String!, $long: String!, $country: String!) {\n  createMessage(text: $text, location: {latitude: $lat, longitude: $long, country: $country}) {\n    __typename\n    id\n    text\n    location {\n      __typename\n      latitude\n      longitude\n      country\n    }\n  }\n}"
+
+  public var text: String
+  public var lat: String
+  public var long: String
+  public var country: String
+
+  public init(text: String, lat: String, long: String, country: String) {
+    self.text = text
+    self.lat = lat
+    self.long = long
+    self.country = country
+  }
+
+  public var variables: GraphQLMap? {
+    return ["text": text, "lat": lat, "long": long, "country": country]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("createMessage", arguments: ["text": GraphQLVariable("text"), "location": ["latitude": GraphQLVariable("lat"), "longitude": GraphQLVariable("long"), "country": GraphQLVariable("country")]], type: .object(CreateMessage.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(createMessage: CreateMessage? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "createMessage": createMessage.flatMap { (value: CreateMessage) -> ResultMap in value.resultMap }])
+    }
+
+    public var createMessage: CreateMessage? {
+      get {
+        return (resultMap["createMessage"] as? ResultMap).flatMap { CreateMessage(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "createMessage")
+      }
+    }
+
+    public struct CreateMessage: GraphQLSelectionSet {
+      public static let possibleTypes = ["Message"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("text", type: .nonNull(.scalar(String.self))),
+        GraphQLField("location", type: .nonNull(.object(Location.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID, text: String, location: Location) {
+        self.init(unsafeResultMap: ["__typename": "Message", "id": id, "text": text, "location": location.resultMap])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var text: String {
+        get {
+          return resultMap["text"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "text")
+        }
+      }
+
+      public var location: Location {
+        get {
+          return Location(unsafeResultMap: resultMap["location"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "location")
+        }
+      }
+
+      public struct Location: GraphQLSelectionSet {
+        public static let possibleTypes = ["Location"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("latitude", type: .nonNull(.scalar(String.self))),
+          GraphQLField("longitude", type: .nonNull(.scalar(String.self))),
+          GraphQLField("country", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(latitude: String, longitude: String, country: String) {
+          self.init(unsafeResultMap: ["__typename": "Location", "latitude": latitude, "longitude": longitude, "country": country])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var latitude: String {
+          get {
+            return resultMap["latitude"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "latitude")
+          }
+        }
+
+        public var longitude: String {
+          get {
+            return resultMap["longitude"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "longitude")
+          }
+        }
+
+        public var country: String {
+          get {
+            return resultMap["country"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "country")
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class CreateMessageSubscription: GraphQLSubscription {
   public let operationDefinition =
     "subscription createMessage {\n  Message(filter: {mutation_in: [CREATED]}) {\n    __typename\n    mutation\n    node {\n      __typename\n      id\n      text\n      location {\n        __typename\n        latitude\n        longitude\n        country\n      }\n    }\n  }\n}"
@@ -272,8 +434,8 @@ public final class CreateMessageSubscription: GraphQLSubscription {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("latitude", type: .nonNull(.scalar(Double.self))),
-            GraphQLField("longitude", type: .nonNull(.scalar(Double.self))),
+            GraphQLField("latitude", type: .nonNull(.scalar(String.self))),
+            GraphQLField("longitude", type: .nonNull(.scalar(String.self))),
             GraphQLField("country", type: .nonNull(.scalar(String.self))),
           ]
 
@@ -283,7 +445,7 @@ public final class CreateMessageSubscription: GraphQLSubscription {
             self.resultMap = unsafeResultMap
           }
 
-          public init(latitude: Double, longitude: Double, country: String) {
+          public init(latitude: String, longitude: String, country: String) {
             self.init(unsafeResultMap: ["__typename": "Location", "latitude": latitude, "longitude": longitude, "country": country])
           }
 
@@ -296,18 +458,18 @@ public final class CreateMessageSubscription: GraphQLSubscription {
             }
           }
 
-          public var latitude: Double {
+          public var latitude: String {
             get {
-              return resultMap["latitude"]! as! Double
+              return resultMap["latitude"]! as! String
             }
             set {
               resultMap.updateValue(newValue, forKey: "latitude")
             }
           }
 
-          public var longitude: Double {
+          public var longitude: String {
             get {
-              return resultMap["longitude"]! as! Double
+              return resultMap["longitude"]! as! String
             }
             set {
               resultMap.updateValue(newValue, forKey: "longitude")
@@ -429,8 +591,8 @@ public final class RetreiveLastMessagesQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("latitude", type: .nonNull(.scalar(Double.self))),
-          GraphQLField("longitude", type: .nonNull(.scalar(Double.self))),
+          GraphQLField("latitude", type: .nonNull(.scalar(String.self))),
+          GraphQLField("longitude", type: .nonNull(.scalar(String.self))),
           GraphQLField("country", type: .nonNull(.scalar(String.self))),
         ]
 
@@ -440,7 +602,7 @@ public final class RetreiveLastMessagesQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(latitude: Double, longitude: Double, country: String) {
+        public init(latitude: String, longitude: String, country: String) {
           self.init(unsafeResultMap: ["__typename": "Location", "latitude": latitude, "longitude": longitude, "country": country])
         }
 
@@ -453,18 +615,18 @@ public final class RetreiveLastMessagesQuery: GraphQLQuery {
           }
         }
 
-        public var latitude: Double {
+        public var latitude: String {
           get {
-            return resultMap["latitude"]! as! Double
+            return resultMap["latitude"]! as! String
           }
           set {
             resultMap.updateValue(newValue, forKey: "latitude")
           }
         }
 
-        public var longitude: Double {
+        public var longitude: String {
           get {
-            return resultMap["longitude"]! as! Double
+            return resultMap["longitude"]! as! String
           }
           set {
             resultMap.updateValue(newValue, forKey: "longitude")

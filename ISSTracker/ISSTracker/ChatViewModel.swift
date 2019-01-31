@@ -53,6 +53,17 @@ class ChatViewModel {
         return cellDataModels[indexPath.row]
     }
     
+    // MARK: Create Message
+    func createMessage(_ msg: ChatMessage) {
+        let createMessageMutation = CreateMessageWithTextMutation(text: msg.text,
+                                                                  lat: String(msg.chatLocation.latitude),
+                                                                  long: String(msg.chatLocation.longitude),
+                                                                  country: msg.chatLocation.countryCode)
+
+        let backgroundQueue = DispatchQueue(label: "com.bbpiepho.ISSTracker.messageQueue", qos: .userInitiated, attributes: .concurrent)
+        apollo.perform(mutation: createMessageMutation, queue: backgroundQueue)
+    }
+    
     // MARK: Data Processing
     func createCellDataModel(cm: ChatMessage) -> ChatMessageCellData {
         return ChatMessageCellData(messageText: cm.text, latitude: cm.chatLocation.latitude, longitude: cm.chatLocation.longitude, countryCode: cm.chatLocation.countryCode)
@@ -83,8 +94,8 @@ class ChatViewModel {
 
 struct ChatMessageCellData {
     let messageText: String
-    let latitude: Double
-    let longitude: Double
+    let latitude: String
+    let longitude: String
     let countryCode: String
 }
 
@@ -93,8 +104,8 @@ struct ChatMessage {
     let chatLocation: ChatLocation
     
     struct ChatLocation {
-        let latitude: Double
-        let longitude: Double
+        let latitude: String
+        let longitude: String
         let countryCode: String
     }
 }

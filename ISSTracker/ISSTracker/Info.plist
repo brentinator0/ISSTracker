@@ -41,6 +41,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Used to get coordinates for interactive messaging</string>
 	<key>MGLMapboxAccessToken</key>
 	<string>pk.eyJ1IjoiYmJwaWVwaG8iLCJhIjoiY2pxMjBwMHgwMGprdTQ5bzY3cWx3M2Y2YyJ9.28MuZAbOJ5euWVcFwNRcqA</string>
 </dict>

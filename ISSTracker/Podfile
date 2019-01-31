@@ -8,6 +8,7 @@ target 'ISSTracker' do
   # Pods for ISSTracker
 
   pod 'Apollo/WebSocket'
+  pod 'MessageKit'
 
   target 'ISSTrackerTests' do
     inherit! :search_paths

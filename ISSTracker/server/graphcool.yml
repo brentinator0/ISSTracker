@@ -15,7 +15,7 @@
 
 
 # In the types.graphql you define your data schema
-types: ./types.graphql
+types: types.graphql
 
 
 functions:
